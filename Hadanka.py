@@ -6,21 +6,18 @@ from interfaces import Hadanka
 class MaHadanka(Hadanka):
 
     def __init__(self, veta: str):
-        if not re.match("^[a-zA-Z ]*$", veta):
-            raise Exception("veta nesmi obsahovat neco mimo anglickych charakteru")
+        if not re.match("^[a-zA-Z ]+$", veta):
+            raise Exception("veta smi obsahovat jen mala pismena anglicke abecedy a mezery")
         self.veta = veta
         self.slovo = veta.split(' ')
         self.index = 0
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.index >= len(self.slovo):
-            raise StopIteration
-        result = self.slovo[self.index]
-        self.index += 1
-        return result
+    def nacti_slovnik(self):
+        with open("words.txt") as file_in:
+            words = []
+            for line in file_in:
+                words.append(line.strip().lower())
+            return words
 
     def pocet_slov(self):
         return len(self.slovo)
@@ -29,5 +26,4 @@ class MaHadanka(Hadanka):
         return self.slovo
 
     def hadej_vetu(self, veta: str):
-        return self.veta == veta
-
+        return self.veta
