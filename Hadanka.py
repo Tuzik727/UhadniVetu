@@ -6,7 +6,7 @@ from interfaces import Hadanka
 class MaHadanka(Hadanka):
 
     def __init__(self, veta: str):
-        if not re.match("^[a-zA-Z?><;,{}_.+=!@#$%&*|']*$", veta):
+        if not re.match("^[a-zA-Z ]*$", veta):
             raise Exception("veta nesmi obsahovat neco mimo anglickych charakteru")
         self.veta = veta
         self.slovo = veta.split(' ')
@@ -25,7 +25,7 @@ class MaHadanka(Hadanka):
     def pocet_slov(self):
         return len(self.slovo)
 
-    def hadej_slovo(self, slovo: str):
+    def hadej_slovo(self):
         return self.slovo
 
     def hadej_vetu(self, veta: str):

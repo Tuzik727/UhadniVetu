@@ -5,7 +5,7 @@ class Hadanka:
     def pocet_slov(self):
         raise NotImplemented
 
-    def hadej_slovo(self, slovo: str):
+    def hadej_slovo(self):
         raise NotImplemented
 
     def hadej_vetu(self, veta: str):
